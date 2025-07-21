@@ -17,7 +17,7 @@ export default function PortfolioPage() {
       image: "/images/portfolio_tag/mtec(2).png",
       technologies: ["Next.js", "Node.js", "Tailwind CSS"],
       category: "Web Application",
-      liveUrl: "#",
+      liveUrl: "https://smtec-campus-tour.vercel.app/",
       githubUrl: "#",
     },
     {
@@ -49,6 +49,7 @@ export default function PortfolioPage() {
       <MouseCursor />
       <Navbar />
 
+      {/* Hero Section */}
       <section className="pt-32 pb-20">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
@@ -57,13 +58,24 @@ export default function PortfolioPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6" whileHover={{ scale: 1.01 }}>
+            <motion.h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6"
+              whileHover={{ scale: 1.01 }}
+            >
               Our{" "}
               <motion.span
                 className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"
-                animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                style={{ backgroundSize: "200% 200%" }}
+                animate={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  backgroundSize: "200% 200%",
+                }}
               >
                 Portfolio
               </motion.span>
@@ -80,6 +92,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* Filter Tabs */}
       <section className="pb-12">
         <div className="container mx-auto px-4 sm:px-6">
           <motion.div
@@ -106,6 +119,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      {/* Projects Grid */}
       <section className="py-16 sm:py-20">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -128,7 +142,7 @@ export default function PortfolioPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+<motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                           <Button size="sm" variant="secondary" className="bg-white/90 hover:bg-white">
                             <ExternalLink className="w-4 h-4" />
@@ -162,6 +176,129 @@ export default function PortfolioPage() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 sm:py-20 bg-slate-800/50">
+        <div className="container mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.h2 className="text-4xl lg:text-5xl font-bold text-white mb-6" whileHover={{ scale: 1.01 }}>
+              Project{" "}
+              <motion.span
+                className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent"
+                whileHover={{
+                  backgroundPosition: ["0% 50%", "100% 50%"],
+                }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  backgroundSize: "200% 200%",
+                }}
+              >
+                Statistics
+              </motion.span>
+            </motion.h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { number: "3", label: "Projects Completed" },
+              { number: "3", label: "Happy Clients" },
+              { number: "100%", label: "Success Rate" },
+              { number: "24/7", label: "Support Available" },
+            ].map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05, duration: 0.5 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.03 }}
+                className="text-center"
+              >
+                {index === 0 ? (
+                  <div className="bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl p-8">
+                    <motion.div
+                      className="text-4xl font-bold text-white mb-2"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                    >
+                      {stat.number}
+                    </motion.div>
+                    <div className="text-blue-100">{stat.label}</div>
+                  </div>
+                ) : null}
+                {index === 1 ? (
+                  <div className="bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl p-8">
+                    <motion.div
+                      className="text-4xl font-bold text-white mb-2"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, delay: 0.3 }}
+                    >
+                      {stat.number}
+                    </motion.div>
+                    <div className="text-blue-100">{stat.label}</div>
+                  </div>
+                ) : null}
+                {index === 2 ? (
+                  <div className="bg-gradient-to-br from-teal-500 to-blue-600 rounded-xl p-8">
+                    <motion.div
+                      className="text-4xl font-bold text-white mb-2"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, delay: 0.6 }}
+                    >
+                      {stat.number}
+                    </motion.div>
+                    <div className="text-blue-100">{stat.label}</div>
+                  </div>
+                ) : null}
+                {index === 3 ? (
+                  <div className="bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl p-8">
+                    <motion.div
+                      className="text-4xl font-bold text-white mb-2"
+                      animate={{ scale: [1, 1.05, 1] }}
+                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, delay: 0.9 }}
+                    >
+                      {stat.number}
+                    </motion.div>
+                    <div className="text-blue-100">{stat.label}</div>
+                  </div>
+                ) : null}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-3xl p-12 text-center"
+            whileHover={{ scale: 1.01 }}
+          >
+            <motion.h2 className="text-4xl lg:text-5xl font-bold text-white mb-6" whileHover={{ scale: 1.02 }}>
+              Ready to Start Your Project?
+            </motion.h2>
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              Let's create something amazing together. Your vision, our expertise.
+            </p>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <Button asChild size="lg" variant="secondary" className="bg-white text-teal-600 hover:bg-gray-100">
+                <a href="/contact">Contact Us Today</a>
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </div>
